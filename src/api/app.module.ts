@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+import { AuthModule } from './auth/auth.module';
 import { Configuration } from './config/config.key';
 import { ConfigModule } from './config/config.module';
 import { ConfigService } from './config/config.service';
@@ -8,7 +9,7 @@ import { HttpErrorFilter } from '@functions/http-erro.filter';
 import { LoggingInterceptor } from '@functions/logging.interceptor';
 
 @Module({
-  imports: [ConfigModule, DatabaseModule],
+  imports: [ConfigModule, DatabaseModule, AuthModule],
   providers: [
     { provide: APP_FILTER, useClass: HttpErrorFilter },
     { provide: APP_INTERCEPTOR, useClass: LoggingInterceptor }
