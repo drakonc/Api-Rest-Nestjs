@@ -12,7 +12,7 @@ import { LoggingInterceptor } from '@functions/logging.interceptor';
   imports: [ConfigModule, DatabaseModule, AuthModule],
   providers: [
     { provide: APP_FILTER, useClass: HttpErrorFilter },
-    { provide: APP_INTERCEPTOR, useClass: LoggingInterceptor }
+    { provide: APP_INTERCEPTOR, useClass: LoggingInterceptor },
   ],
 })
 export class AppModule {
@@ -21,5 +21,4 @@ export class AppModule {
   constructor(private readonly _configService: ConfigService) {
     AppModule.port = this._configService.get(Configuration.PORT);
   }
-
 }
